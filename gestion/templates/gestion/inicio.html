@@ -1,0 +1,29 @@
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-4 mb-4">📚 Bienvenido a Gestión de Libros</h1>
+    <p class="lead mb-5">Administra tus autores y libros de manera fácil y rápida.</p>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">📝 Autores</h5>
+                    <p class="card-text">Gestiona la información de los autores.</p>
+                    <a href="{% url 'lista_autores' %}" class="btn btn-primary">Ver Autores</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">📚 Libros</h5>
+                    <p class="card-text">Administra el catálogo de libros.</p>
+                    <a href="{% url 'lista_libros' %}" class="btn btn-primary">Ver Libros</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -65,3 +65,6 @@ def eliminar_libro(request, pk):
         libro.delete()
         return redirect('lista_libros')
     return render(request, 'gestion/libro_confirm_delete.html', {'libro': libro})
+
+def inicio(request):
+    return render(request, 'gestion/inicio.html')

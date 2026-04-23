@@ -1,6 +1,21 @@
-<h1>Formulario de Autor</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar</button>
-</form>
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+<h1 class="mb-4">📝 Formulario de Autor</h1>
+<div class="card shadow-sm p-4">
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="mb-3">
+            <label class="form-label">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+            <div class="text-danger small">{{ field.errors }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">💾 Guardar</button>
+        <a href="{% url 'lista_autores' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

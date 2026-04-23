@@ -1,11 +1,34 @@
-<h1>Autores</h1>
-<a href="{% url 'crear_autor' %}">Agregar Autor</a>
-<ul>
-{% for autor in autores %}
-    <li>
-        {{ autor.nombre }} - {{ autor.correo }}
-        <a href="{% url 'editar_autor' autor.pk %}">Editar</a>
-        <a href="{% url 'eliminar_autor' autor.pk %}">Eliminar</a>
-    </li>
-{% endfor %}
-</ul>
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>📝 Autores</h1>
+    <a href="{% url 'crear_autor' %}" class="btn btn-primary">+ Agregar Autor</a>
+</div>
+
+<table class="table table-striped table-hover shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for autor in autores %}
+        <tr>
+            <td>{{ autor.nombre }}</td>
+            <td>{{ autor.correo }}</td>
+            <td>
+                <a href="{% url 'editar_autor' autor.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'eliminar_autor' autor.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" class="text-center text-muted">No hay autores registrados</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,6 +1,13 @@
-<h1>Eliminar Libro</h1>
-<p>¿Desea eliminar el libro "{{ libro.titulo }}"?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Sí, eliminar</button>
-</form>
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+<div class="card shadow-sm p-4 text-center">
+    <h1 class="text-danger mb-4">⚠️ Eliminar Libro</h1>
+    <p class="lead">¿Desea eliminar el libro <strong>"{{ libro.titulo }}"</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'lista_libros' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
